@@ -3,7 +3,7 @@ const pool = require("../db/index");
 exports.listAuthors = async (req, res) => {
   try {
     const result = await pool.query("SELECT * FROM authors");
-    res.render("authors", { title: 'Authors', authors: result.rows });
+    res.render("authors", { title: "Authors", authors: result.rows });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Failed to fetch authors" });
@@ -13,21 +13,25 @@ exports.listAuthors = async (req, res) => {
 exports.listBooksByAuthor = async (req, res) => {
   const { id } = req.params;
   try {
-    // Fetch the author by ID
-    const authorResult = await pool.query("SELECT * FROM authors WHERE id = $1", [id]);
+    const authorResult = await pool.query(
+      "SELECT * FROM authors WHERE id = $1",
+      [id]
+    );
     if (authorResult.rows.length === 0) {
       return res.status(404).send("Author not found");
     }
-    
+
     const author = authorResult.rows[0];
-    
-    // Fetch books by author ID
-    const booksResult = await pool.query("SELECT * FROM books WHERE author_id = $1", [id]);
-    
-    // Render the view with the author and their books
+    console.log(author);
+    const booksResult = await pool.query(
+      "SELECT * FROM books WHERE author_name = $1",
+      [author.name]
+    );
+
     res.render("authorBooks", {
       author: author,
       books: booksResult.rows,
+      title: `Books by ${author.name}`,
     });
   } catch (err) {
     console.error(err);
@@ -35,9 +39,8 @@ exports.listBooksByAuthor = async (req, res) => {
   }
 };
 
-
 exports.createAuthorForm = (req, res) => {
-  res.render("newAuthor");
+  res.render("newAuthor", { title: "Create New Author" });
 };
 
 exports.createAuthor = async (req, res) => {
@@ -63,7 +66,11 @@ exports.editAuthorForm = async (req, res) => {
     if (result.rows.length === 0) {
       return res.status(404).send("Author not found");
     }
-    res.render("editAuthor", { author: result.rows[0] });
+
+    res.render("editAuthor", {
+      author: result.rows[0],
+      title: `Edit ${result.rows[0].name}`,
+    });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Failed to fetch author" });
