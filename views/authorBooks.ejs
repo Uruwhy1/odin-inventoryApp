@@ -1,29 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Books by <%= author.name %></title>
-</head>
-<body>
-    <h1>Books by <%= author.name %></h1>
-    <% if (books.length > 0) { %>
-        <ul>
-            <% books.forEach(book => { %>
-                <li>
-                    <h2><%= book.title %></h2>
-                    <p><%= book.description %></p>
-                    <p>Category: <%= book.category_name %></p>
-                    <a href="/books/<%= book.id %>/edit">Edit</a>
-                    <form action="/books/<%= book.id %>/delete" method="POST" style="display:inline;">
-                        <button type="submit">Delete</button>
-                    </form>
-                </li>
-            <% }) %>
-        </ul>
-    <% } else { %>
-        <p>No books found for this author.</p>
-    <% } %>
-    <a href="/authors">Back to Authors</a>
-</body>
-</html>
+
+      <h1>Books by <%= author.name %></h1>
+      <% if (books.length > 0) { %>
+      <ul>
+        <% books.forEach(book => { %>
+        <li>
+          <h2><%= book.title %></h2>
+          <p><%= book.description %></p>
+          <p>Category: <%= book.category_name %></p>
+          <a href="/<%= book.id %>/edit">Edit</a>
+          <form
+            action="/<%= book.id %>/delete"
+            method="POST"
+            style="display: inline"
+          >
+            <button type="submit">Delete</button>
+          </form>
+        </li>
+        <% }) %>
+      </ul>
+      <% } else { %>
+      <p>No books found for this author.</p>
+      <% } %>
+      <a href="/authors">Back to Authors</a>

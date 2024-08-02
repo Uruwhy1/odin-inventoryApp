@@ -3,7 +3,7 @@ const pool = require("../db/index");
 exports.listAuthors = async (req, res) => {
   try {
     const result = await pool.query("SELECT * FROM authors");
-    res.render("authors", { authors: result.rows });
+    res.render("authors", { title: 'Authors', authors: result.rows });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Failed to fetch authors" });
