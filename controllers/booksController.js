@@ -15,7 +15,7 @@ exports.newBookForm = async (req, res) => {
     const authorsResult = await pool.query("SELECT name FROM authors");
     const categoriesResult = await pool.query("SELECT name FROM categories");
     res.render("newBook", {
-      title: 'Add Book',
+      title: "Add Book",
       authors: authorsResult.rows,
       categories: categoriesResult.rows,
     });
@@ -32,7 +32,7 @@ exports.createBook = async (req, res) => {
       "INSERT INTO books (title, description, author_name, category_name) VALUES ($1, $2, $3, $4) RETURNING *",
       [title, description, author_name, category_name]
     );
-    res.redirect("/");
+    res.redirect("/books");
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Failed to add book" });
@@ -55,7 +55,7 @@ exports.editBookForm = async (req, res) => {
 
     res.render("editBook", {
       book,
-      title: 'Edit Book',
+      title: "Edit Book",
       authors: authorsResult.rows,
       categories: categoriesResult.rows,
     });
@@ -68,7 +68,6 @@ exports.editBookForm = async (req, res) => {
 exports.updateBook = async (req, res) => {
   const { id } = req.params;
   const { title, description, author_name, category_name } = req.body;
-  console.log(title, description, author_name, category_name);
 
   try {
     await pool.query(
@@ -76,7 +75,7 @@ exports.updateBook = async (req, res) => {
       [title, description, author_name, category_name, id]
     );
 
-    res.redirect(`/`);
+    res.redirect(`/books`);
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Failed to update book" });
@@ -93,7 +92,7 @@ exports.deleteBook = async (req, res) => {
     if (result.rows.length === 0) {
       return res.status(404).send("Book not found");
     }
-    res.redirect("/");
+    res.redirect("/books");
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Failed to delete book" });

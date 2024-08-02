@@ -3,11 +3,11 @@
   <% books.forEach(book => { %>
   <li>
     <strong><%= book.title %></strong>: <%= book.description %>
-    <a href="/<%= book.id %>/edit">Edit</a>
-    <form action="/<%= book.id %>/delete" method="POST" style="display: inline">
+    <a href="/books/<%= book.id %>/edit">Edit</a>
+    <form action="/books/<%= book.id %>/delete" method="POST" style="display: inline">
       <button type="submit">Delete</button>
     </form>
   </li>
   <% }) %>
 </ul>
-<a href="/new">Add New Book</a>
+<a href="/books/new">Add New Book</a>

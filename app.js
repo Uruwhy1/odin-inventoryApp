@@ -18,9 +18,13 @@ app.set("views", path.join(__dirname, "views"));
 app.use(expressLayouts);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", booksRoutes);
+app.get("/", (req, res) => {
+  res.render("home", {title: 'Homepage'});
+});
+
+app.use("/books", booksRoutes);
 app.use("/authors", authorsRoutes);
 app.use("/categories", categoriesRoutes);
 

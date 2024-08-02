@@ -1,5 +1,5 @@
 <h1>Edit Book</h1>
-<form action="/<%= book.id %>/edit" method="POST">
+<form action="/books/<%= book.id %>/edit" method="POST">
   <div>
     <label for="title">Title:</label>
     <input
@@ -30,4 +30,4 @@
   </div>
   <button type="submit">Update Book</button>
 </form>
-<a href="/">Back to Books</a>
+<a href="/books">Back to Books</a>

@@ -6,9 +6,9 @@
     <h2><%= book.title %></h2>
     <p><%= book.description %></p>
     <p>Author: <%= book.author_name %></p>
-    <a href="/<%= book.id %>/edit">Edit</a>
+    <a href="/books/<%= book.id %>/edit">Edit</a>
     <form
-      action="/<%= book.id %>/delete"
+      action="/books/<%= book.id %>/delete"
       method="POST"
       style="display: inline"
     >
