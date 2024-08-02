@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Categories</title>
+  </head>
+  <body>
+    <h1>Categories</h1>
+    <a href="/categories/new">Create New Category</a>
+    <ul>
+      <% categories.forEach(category => { %>
+      <li>
+        <a href="/categories/<%= category.id %>"><%= category.name %></a>
+        <a href="/categories/<%= category.id %>/edit">Edit</a>
+        <form
+          action="/categories/<%= category.id %>/delete"
+          method="POST"
+          style="display: inline"
+        >
+          <button type="submit">Delete</button>
+        </form>
+      </li>
+      <% }) %>
+    </ul>
+  </body>
+</html>
