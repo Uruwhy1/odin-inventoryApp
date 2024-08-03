@@ -1,7 +1,12 @@
 :root {
   --main-bg: #ffffff;
   --opposite-bg: #303030;
+
+  --link-text: rgb(0, 183, 255);
   --text-color: #000;
+  --opposite-text-color: #fff;
+
+
 
   --yellow: yellow;
   --brown: brown;
@@ -11,7 +16,11 @@
 :root.dark {
   --main-bg: #303030;
   --opposite-bg: #ffffff;
+
+  --link-text: rgb(0, 140, 255);
   --text-color: #fff;
+  --opposite-text-color: #000;
+
 
   --brown: rgb(255, 217, 186);
   --red: rgb(255, 135, 135);

@@ -1,0 +1,31 @@
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-content {
+  background-image: url("../images/library.webp");
+  background-size: cover;
+
+  width: 75%;
+  height: 60%;
+  border-radius: 10px;
+
+  color: #ffffff;
+  display: flex;
+  align-items: end;
+}
+
+.home-text {
+  background-color: #000000b6;
+  border-radius: 0 0 10px 10px;
+  width: 100%;
+  padding: 1rem;
+}
+
+.home-title {
+  margin-bottom: -5px;
+}
+.home-subtitle {
+}

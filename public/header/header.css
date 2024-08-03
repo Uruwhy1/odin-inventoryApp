@@ -17,7 +17,7 @@ header img {
 
 /* nav bar */
 
-header .container {
+header .header-container {
   display: flex;
   align-items: center;
   gap: 4rem; /* gap between nav bar and theme toggle */
