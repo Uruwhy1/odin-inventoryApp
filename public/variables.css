@@ -1,0 +1,18 @@
+:root {
+  --main-bg: #ffffff;
+  --opposite-bg: #303030;
+  --text-color: #000;
+
+  --yellow: yellow;
+  --brown: brown;
+  --red: red;
+}
+
+:root.dark {
+  --main-bg: #303030;
+  --opposite-bg: #ffffff;
+  --text-color: #fff;
+
+  --brown: rgb(255, 217, 186);
+  --red: rgb(255, 135, 135);
+}
