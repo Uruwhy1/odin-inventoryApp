@@ -6,7 +6,7 @@
   --text-color: #000;
   --opposite-text-color: #fff;
 
-
+  --borders: #ebebebfd;
 
   --yellow: yellow;
   --brown: brown;
@@ -21,6 +21,7 @@
   --text-color: #fff;
   --opposite-text-color: #000;
 
+  --borders: #535353fd;
 
   --brown: rgb(255, 217, 186);
   --red: rgb(255, 135, 135);

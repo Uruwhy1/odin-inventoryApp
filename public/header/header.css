@@ -1,13 +1,11 @@
 header {
-  border-bottom: 1px solid #ebebebfd;
+  border-bottom: 1px solid var(--borders);
   padding: 1.5rem 4rem;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  background-color: var(--main-background);
-  transition: 0.1s;
 }
 
 header img {

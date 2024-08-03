@@ -1,9 +1,27 @@
 <link rel="stylesheet" href="home/home.css" />
 <div class="home-content">
   <div class="home-text">
-    <h1 class="home-title">Welcome to Bookshelf.</h1>
+    <h1 class="home-title">
+      Welcome to <span style="color: red">Bookshelf</span>.
+    </h1>
     <p class="home-subtitle">
       Search for a book, check authors, or browse by category.
     </p>
   </div>
+</div>
+<div class="home-data-container">
+  <h2>Categories</h2>
+  <ul class="home-data-list">
+    <% categories.forEach(category => { %>
+    <li><a href="/categories/<%= category.id %>"><%= category.name %></a></li>
+    <% }) %>
+  </ul>
+</div>
+<div class="home-data-container">
+  <h2>Authors</h2>
+  <ul class="home-data-list">
+    <% authors.forEach(author => { %>
+    <li><a href="/authors/<%= author.id %>"><%= author.name %></a></li>
+    <% }) %>
+  </ul>
 </div>

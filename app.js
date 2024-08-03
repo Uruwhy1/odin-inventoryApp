@@ -1,6 +1,5 @@
 const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
-
 const path = require("path");
 require("dotenv").config();
 
@@ -8,6 +7,7 @@ const createTables = require("./db/init");
 const booksRoutes = require("./routes/booksRoutes");
 const authorsRoutes = require("./routes/authorsRoutes");
 const categoriesRoutes = require("./routes/categoriesRoutes");
+const pool = require('./db/index');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -20,8 +20,19 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
-app.get("/", (req, res) => {
-  res.render("home", {title: 'Homepage'});
+app.get("/", async (req, res) => {
+  try {
+    const categoriesResult = await pool.query("SELECT * FROM categories");
+    const authorsResult = await pool.query("SELECT * FROM authors");
+    res.render("home", {
+      title: 'Homepage',
+      categories: categoriesResult.rows,
+      authors: authorsResult.rows
+    });
+  } catch (err) {
+    console.error("Error fetching catgories and authors:", err.stack);
+    res.status(500).send("Error fetching catgories and authors");
+  }
 });
 
 app.use("/books", booksRoutes);
