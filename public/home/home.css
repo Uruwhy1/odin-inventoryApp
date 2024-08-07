@@ -14,10 +14,11 @@ main div {
 /* image thingy */
 
 .home-content {
-  background-image: url("../images/library.jpeg");
+  background-image: url("../assets/images/library.jpeg");
   background-size: cover;
 
   height: 60%;
+  min-height: 300px;
   border-radius: 10px;
 
   color: #ffffff;
@@ -40,24 +41,39 @@ main div {
 
 .home-data-container {
   display: flex;
+
   flex-direction: column;
   gap: 1rem;
 }
 
 .home-data-list {
   display: flex;
-  gap: 2rem;
-}
-.home-data-list li {
-  display: block;
+  flex-wrap: wrap;
+  gap: 1rem;
 
-  background-color: gray;
-  color: #fff;
-
-  border-radius: 50px;
-  padding: 0.5rem;
+  list-style: none;
 }
+
 .home-data-list a {
   text-decoration: none;
-  color: #fff;
+  color: #000;
+  font-weight: 500;
+
+  border-radius: 10px;
+  background-color: var(--home-anchor-bg);
+
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+
+  cursor: pointer;
+  transition: background 0.1s;
+
+  transition: 0.1s;
 }
+.home-data-list a:hover {
+  background-color: var(--home-anchor-bg-hover);
+}
+.home-data-list a:active {
+  filter: saturate(3.5)
+}
+

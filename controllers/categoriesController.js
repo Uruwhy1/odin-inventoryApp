@@ -21,15 +21,15 @@ exports.listBooksByCategory = async (req, res) => {
       return res.status(404).send("Category not found");
     }
 
-    const categoryName = categoryResult.rows[0].name;
+    const category = categoryResult.rows[0];
     const booksResult = await pool.query(
-      "SELECT * FROM books WHERE category_name = $1",
-      [categoryName]
+      "SELECT * FROM books WHERE category_id = $1",
+      [id]
     );
-    
+
     res.render("categoryBooks", {
-      title: `Books in ${categoryResult.rows[0]}`,
-      category: categoryResult.rows[0],
+      title: `Books in ${category.name}`,
+      category: category,
       books: booksResult.rows,
     });
   } catch (err) {
@@ -39,7 +39,7 @@ exports.listBooksByCategory = async (req, res) => {
 };
 
 exports.createCategoryForm = (req, res) => {
-  res.render("newCategory");
+  res.render("newCategory", { title: "New Category" });
 };
 
 exports.createCategory = async (req, res) => {

@@ -12,8 +12,10 @@ exports.getAllBooks = async (req, res) => {
 
 exports.newBookForm = async (req, res) => {
   try {
-    const authorsResult = await pool.query("SELECT name FROM authors");
-    const categoriesResult = await pool.query("SELECT name FROM categories");
+    const authorsResult = await pool.query("SELECT id, name FROM authors");
+    const categoriesResult = await pool.query(
+      "SELECT id, name FROM categories"
+    );
     res.render("newBook", {
       title: "Add Book",
       authors: authorsResult.rows,
@@ -26,11 +28,11 @@ exports.newBookForm = async (req, res) => {
 };
 
 exports.createBook = async (req, res) => {
-  const { title, description, author_name, category_name } = req.body;
+  const { title, description, author_id, category_id } = req.body;
   try {
     const result = await pool.query(
-      "INSERT INTO books (title, description, author_name, category_name) VALUES ($1, $2, $3, $4) RETURNING *",
-      [title, description, author_name, category_name]
+      "INSERT INTO books (title, description, author_id, category_id) VALUES ($1, $2, $3, $4) RETURNING *",
+      [title, description, author_id, category_id]
     );
     res.redirect("/books");
   } catch (err) {
@@ -50,8 +52,8 @@ exports.editBookForm = async (req, res) => {
     }
     const book = bookResult.rows[0];
 
-    const authorsResult = await pool.query("SELECT name FROM authors");
-    const categoriesResult = await pool.query("SELECT name FROM categories");
+    const authorsResult = await pool.query("SELECT * FROM authors");
+    const categoriesResult = await pool.query("SELECT * FROM categories");
 
     res.render("editBook", {
       book,
@@ -67,12 +69,12 @@ exports.editBookForm = async (req, res) => {
 
 exports.updateBook = async (req, res) => {
   const { id } = req.params;
-  const { title, description, author_name, category_name } = req.body;
+  const { title, description, author_id, category_id } = req.body;
 
   try {
     await pool.query(
-      "UPDATE books SET title = $1, description = $2, author_name = $3, category_name = $4 WHERE id = $5",
-      [title, description, author_name, category_name, id]
+      "UPDATE books SET title = $1, description = $2, author_id = $3, category_id = $4 WHERE id = $5",
+      [title, description, author_id, category_id, id]
     );
 
     res.redirect(`/books`);

@@ -22,8 +22,8 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", async (req, res) => {
   try {
-    const categoriesResult = await pool.query("SELECT * FROM categories");
-    const authorsResult = await pool.query("SELECT * FROM authors");
+    const categoriesResult = await pool.query("SELECT * FROM categories LIMIT 7");
+    const authorsResult = await pool.query("SELECT * FROM authors LIMIT 7");
     res.render("home", {
       title: 'Homepage',
       categories: categoriesResult.rows,

@@ -8,9 +8,13 @@
 
   --borders: #ebebebfd;
 
-  --yellow: yellow;
   --brown: brown;
   --red: red;
+  /* below this line they are the same for .dark */
+  --yellow: yellow;
+
+  --home-anchor-bg: rgb(255, 222, 222);
+  --home-anchor-bg-hover: rgb(247, 178, 178);
 }
 
 :root.dark {

@@ -10,18 +10,18 @@
   </div>
 </div>
 <div class="home-data-container">
-  <h2>Categories</h2>
+  <h2>Trending Categories</h2>
   <ul class="home-data-list">
     <% categories.forEach(category => { %>
-    <li><a href="/categories/<%= category.id %>"><%= category.name %></a></li>
+    <a href="/categories/<%= category.id %>"><li><%= category.name %></li></a>
     <% }) %>
   </ul>
 </div>
 <div class="home-data-container">
-  <h2>Authors</h2>
+  <h2>Trending Authors</h2>
   <ul class="home-data-list">
     <% authors.forEach(author => { %>
-    <li><a href="/authors/<%= author.id %>"><%= author.name %></a></li>
+    <a href="/authors/<%= author.id %>"><li><%= author.name %></li></a>
     <% }) %>
   </ul>
 </div>

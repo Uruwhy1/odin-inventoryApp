@@ -22,10 +22,9 @@ exports.listBooksByAuthor = async (req, res) => {
     }
 
     const author = authorResult.rows[0];
-    console.log(author);
     const booksResult = await pool.query(
-      "SELECT * FROM books WHERE author_name = $1",
-      [author.name]
+      "SELECT * FROM books WHERE author_id = $1",
+      [id]
     );
 
     res.render("authorBooks", {

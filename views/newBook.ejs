@@ -9,18 +9,18 @@
     <textarea id="description" name="description" required></textarea>
   </div>
   <div>
-    <label for="author_name">Author:</label>
-    <select id="author_name" name="author_name" required>
+    <label for="author_id">Author:</label>
+    <select id="author_id" name="author_id" required>
       <% authors.forEach(author => { %>
-      <option value="<%= author.name %>"><%= author.name %></option>
+      <option value="<%= author.id %>"><%= author.name %></option>
       <% }) %>
     </select>
   </div>
   <div>
-    <label for="category_name">Category:</label>
-    <select id="category_name" name="category_name" required>
+    <label for="category_id">Category:</label>
+    <select id="category_id" name="category_id" required>
       <% categories.forEach(category => { %>
-      <option value="<%= category.name %>"><%= category.name %></option>
+      <option value="<%= category.id %>"><%= category.name %></option>
       <% }) %>
     </select>
   </div>
