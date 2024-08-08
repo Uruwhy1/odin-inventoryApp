@@ -24,6 +24,10 @@
       <% }) %>
     </select>
   </div>
+  <div>
+    <label for="image_url">Image URL:</label>
+    <input type="text" id="image_url" name="image_url" value="<%= book ? book.image_url : '' %>" />
+  </div>
   <button type="submit">Update Book</button>
 </form>
 <a href="/books">Back to Books</a>

@@ -1,13 +1,30 @@
-<h1>Books</h1>
+<link rel="stylesheet" href="/books/books.css" />
+<link rel="stylesheet" href="/books/book-card.css" />
+
+<script src="/books/books.js" defer></script>
+
+<h1>All Books</h1>
+<div class="container-header">
+  <input class="search" id="searchBooks" placeholder="Search Books" />
+  <a class="add-new" href="/books/new">Add New Book</a>
+</div>
 <ul>
   <% books.forEach(book => { %>
-  <li>
-    <strong><%= book.title %></strong>: <%= book.description %>
-    <a href="/books/<%= book.id %>/edit">Edit</a>
-    <form action="/books/<%= book.id %>/delete" method="POST" style="display: inline">
-      <button type="submit">Delete</button>
-    </form>
-  </li>
+  <a href="/books/<%= book.id %>/edit">
+    <li>
+      <div
+        class="image"
+        style="
+          background-image: url('<%= book.image_url || `/assets/images/book.png`%>');
+        "
+      ></div>
+      <div class="info">
+        <div>
+          <strong class="title"><%= book.title %></strong>
+          <p class="author"><%= book.author_name %></p>
+        </div>
+      </div>
+    </li>
+  </a>
   <% }) %>
 </ul>
-<a href="/books/new">Add New Book</a>

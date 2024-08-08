@@ -10,9 +10,15 @@
 
   --brown: brown;
   --red: red;
+
+  --book-bg: #eeeeee;
+
   /* below this line they are the same for .dark */
   --yellow: yellow;
 
+  --edit-button-bg: rgb(253, 253, 114);
+  --add-button-bg: rgb(255, 135, 135);
+  
   --home-anchor-bg: rgb(255, 222, 222);
   --home-anchor-bg-hover: rgb(247, 178, 178);
 }
@@ -24,6 +30,8 @@
   --link-text: rgb(0, 140, 255);
   --text-color: #fff;
   --opposite-text-color: #000;
+
+  --book-bg: #818181;
 
   --borders: #535353fd;
 

@@ -1,0 +1,57 @@
+/* bottom area */
+ul {
+  display: grid;
+  gap: 2rem;
+
+  place-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 0.25fr));
+  grid-auto-rows: max-content;
+
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+li {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+}
+
+.image {
+  height: 250px;
+  width: 100%;
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  border-radius: 5px;
+  margin-bottom: 0.3rem;
+}
+
+.info {
+  align-self: start;
+
+  display: flex;
+  flex-direction: column;
+
+  cursor: pointer;
+}
+.info div {
+  height: 100%;
+}
+
+.title {
+  font-size: 1.1em;
+}
+.author {
+  font-weight: 500;
+}
+
