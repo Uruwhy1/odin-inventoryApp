@@ -74,6 +74,17 @@ main div {
   background-color: var(--home-anchor-bg-hover);
 }
 .home-data-list a:active {
-  filter: saturate(3.5)
+  filter: saturate(3.5);
 }
 
+@media screen and (max-width: 1000px) {
+  main {
+    padding: 0% 5%;
+    overflow: hidden;
+  }
+
+  .home-content {
+    height: 50%;
+  }
+
+}
