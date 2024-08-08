@@ -11,10 +11,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const updateSvg = () => {
     if (rootElement.classList.contains("dark")) {
       toggleSwitch.innerHTML = darkSvg;
-      logo.src = "assets/images/logo-dark-removebg-preview.png";
+      logo.src = "/assets/images/logo-dark-removebg-preview.png";
     } else {
       toggleSwitch.innerHTML = lightSvg;
-      logo.src = "assets/images/logo-white-removebg-preview.png";
+      logo.src = "/assets/images/logo-white-removebg-preview.png";
     }
   };
 
