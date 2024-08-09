@@ -12,11 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("click", function (event) {
     const target = event.target.closest("a");
 
-    if (event.target.classList.contains("remove")) {
-      setTimeout(() => {
-        hideLoadingBar();
-      }, 500);
-    }
+
 
     if (target && target.href) {
       event.preventDefault();
@@ -34,7 +30,8 @@ document.addEventListener("DOMContentLoaded", () => {
       showLoadingBar();
 
       setTimeout(() => {
-        form.submit();  // Submit the form after showing the loading bar
+        hideLoadingBar();
+        form.submit(); // Submit the form after showing the loading bar
       }, 500);
     }
   });

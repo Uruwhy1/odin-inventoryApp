@@ -9,6 +9,7 @@ main {
 /* top area */
 .container-header {
   margin-top: -1.5rem;
+  margin-bottom: 2rem;
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -45,11 +46,70 @@ main {
   filter: saturate(6);
 }
 
-/* medai queries */
 @media screen and (max-width: 1000px) {
   main {
     padding: 0% 5%;
     overflow: hidden;
+  }
+
+  .container-header {
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    gap: 3rem;
+    margin-right: 2.5rem;
+  }
+
+  .tag-link {
+    top: 1rem;
+    right: -1.5rem;
+
+    border-radius: 0 10px 10px 0;
+  }
+  .remove {
+    top: 4rem;
+    background-color: var(--remove-button-bg);
+  }
+
+  .tag-link:hover {
+    top: 1rem;
+    right: -2.5rem;
+  }
+  .remove:hover {
+    top: 4rem;
+  }
+
+  @keyframes extend {
+    from {
+      z-index: 2;
+    }
+    to {
+      right: -2.5rem;
+      padding-left: calc(100% + 0.5rem);
+      z-index: 2;
+    }
+  }
+}
+
+@media (hover: none) and (min-width: 1001px) {
+  .tag-link {
+    color: #fff;
+    top: -2.5rem;
+  }
+}
+
+@media (hover: none) and (max-width: 1000px) {
+  .tag-link {
+    right: -2.5rem;
+    color: #fff;
+  }
+}
+
+@media (max-width: 500px) {
+  ul {
+    grid-template-columns: 70%;
+    margin-right: 0;
   }
 }
 
@@ -57,6 +117,10 @@ main {
 @media screen and (max-width: 440px) {
   .search {
     width: 50%;
+  }
+
+  li {
+    padding: 0;
   }
 }
 
