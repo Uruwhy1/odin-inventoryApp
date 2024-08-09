@@ -20,8 +20,9 @@ const remove = document.querySelectorAll(".remove");
 
 remove.forEach((item) => {
   item.addEventListener("click", () => {
-    const book = item.closest("a");
+    const book = item.closest("li");
     item.style.animation = "extend 0.25s linear forwards";
+
     setTimeout(() => {
       book.style.opacity = "0";
     }, 250);

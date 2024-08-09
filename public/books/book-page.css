@@ -25,23 +25,6 @@ h1 {
 .author {
   font-size: 1.5rem;
 }
-
-.edit,
-.remove {
-  border: none;
-  padding: 0.3em 1em;
-  border-radius: 5px;
-
-  text-decoration: none;
-  transition: filter 0.3s;
-}
-.edit {
-  background-color: var(--edit-button-bg);
-}
-.remove {
-  background-color: var(--add-button-bg);
-}
-
 @media screen and (max-width: 1800px) {
   main {
     padding: 0% 10%;
