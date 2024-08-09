@@ -45,11 +45,12 @@ li {
   right: 1rem;
   top: -2px;
 
-  border-radius: 0 0  51px 51px;
+  border-radius: 0 0 51px 51px;
   border: 2px solid var(--main-bg);
 
-  background-color: var(--add-button-bg);
+  background-color: var(--remove-button-bg);
   padding: 0.5rem;
+
   color: #fff;
 
   transition: 0.3s;
@@ -77,4 +78,14 @@ li {
 }
 .author {
   font-weight: 500;
+}
+
+@keyframes extend {
+  from {
+    padding-top: 1.5rem;
+  }
+  to {
+    padding-top: 218px;
+    border-radius: 0;
+  }
 }
