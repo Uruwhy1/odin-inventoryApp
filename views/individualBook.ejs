@@ -1,0 +1,15 @@
+<link rel="stylesheet" href="/books/book-page.css" />
+
+<img
+  class="cover"
+  src="<%= book.image_url || '/assets/images/book.png' %>"
+  alt=""
+/>
+<div class="info">
+  <div>
+    <h1 class="title"><%= title %></h1>
+    <p class="author"><%= author %></p>
+  </div>
+  <p class="description"><%= description %></p>
+  <div class="buttons"><button class="remove">DELETE</button> <button class="edit">EDIT</button></div>
+</div>

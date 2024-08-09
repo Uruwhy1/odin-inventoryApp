@@ -14,7 +14,6 @@ exports.getAllBooks = async (req, res) => {
   }
 };
 
-
 exports.newBookForm = async (req, res) => {
   try {
     const authorsResult = await pool.query("SELECT id, name FROM authors");
@@ -47,11 +46,12 @@ exports.createBook = async (req, res) => {
   }
 };
 
-
 exports.editBookForm = async (req, res) => {
   const { id } = req.params;
   try {
-    const bookResult = await pool.query("SELECT * FROM books WHERE id = $1", [id]);
+    const bookResult = await pool.query("SELECT * FROM books WHERE id = $1", [
+      id,
+    ]);
     if (bookResult.rows.length === 0) {
       return res.status(404).send("Book not found");
     }
@@ -72,7 +72,6 @@ exports.editBookForm = async (req, res) => {
   }
 };
 
-
 exports.updateBook = async (req, res) => {
   const { id } = req.params;
   const { title, description, author_id, category_id, image_url } = req.body;
@@ -89,7 +88,6 @@ exports.updateBook = async (req, res) => {
   }
 };
 
-
 exports.deleteBook = async (req, res) => {
   const { id } = req.params;
   try {
@@ -100,11 +98,50 @@ exports.deleteBook = async (req, res) => {
     if (result.rows.length === 0) {
       return res.status(404).send("Book not found");
     }
-    res.redirect("/books");
+    res.status(204).send();
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Failed to delete book" });
   }
 };
 
-exports.getBookById = async (req, res) => {};
+exports.getBookById = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const bookResult = await pool.query(
+      ` SELECT 
+        books.id, 
+        books.title, 
+        books.description, 
+        books.image_url, 
+        authors.name AS author_name, 
+        categories.name AS category_name
+      FROM 
+        books
+      JOIN 
+        authors ON books.author_id = authors.id
+      JOIN 
+        categories ON books.category_id = categories.id
+      WHERE 
+        books.id = $1;
+    `,
+      [id]
+    );
+    if (bookResult.rows.length === 0) {
+      return res.status(404).send("Book not found");
+    }
+    const book = bookResult.rows[0];
+
+    res.render("individualBook", {
+      book,
+      image: book.image_url,
+      title: book.title,
+      description: book.description,
+      author: book.author_name,
+      category: book.category_name,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to fetch book details" });
+  }
+};

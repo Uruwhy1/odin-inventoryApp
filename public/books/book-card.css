@@ -13,6 +13,8 @@ ul {
 a {
   text-decoration: none;
   color: inherit;
+
+  transition: opacity 0.5s;
 }
 li {
   display: flex;
@@ -34,6 +36,28 @@ li {
 
   border-radius: 5px;
   margin-bottom: 0.3rem;
+
+  position: relative;
+}
+
+.remove {
+  position: absolute;
+  right: 1rem;
+  top: -2px;
+
+  border-radius: 0 0  51px 51px;
+  border: 2px solid var(--main-bg);
+
+  background-color: var(--add-button-bg);
+  padding: 0.5rem;
+  color: #fff;
+
+  transition: 0.3s;
+}
+.image button:hover {
+  filter: saturate(2);
+  cursor: pointer;
+  padding-top: 1.5rem;
 }
 
 .info {
@@ -54,4 +78,3 @@ li {
 .author {
   font-weight: 500;
 }
-

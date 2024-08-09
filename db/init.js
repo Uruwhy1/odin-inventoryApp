@@ -6,7 +6,8 @@ const createTables = async () => {
     await client.query(`
       CREATE TABLE IF NOT EXISTS categories (
         id SERIAL PRIMARY KEY,
-        name VARCHAR(255) NOT NULL UNIQUE
+        name VARCHAR(255) NOT NULL UNIQUE,
+        image_url VARCHAR(255)
       );
     `);
     await client.query(`

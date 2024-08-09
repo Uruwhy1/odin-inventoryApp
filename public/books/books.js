@@ -15,3 +15,17 @@ document.getElementById("searchBooks").addEventListener("input", function () {
     }
   });
 });
+
+const remove = document.querySelectorAll(".remove");
+
+remove.forEach((item) => {
+  item.addEventListener("click", () => {
+    const book = item.closest("a")
+    
+    book.style.opacity = '0';
+    setTimeout(() => {
+      book.style.display = "none";
+    }, 500);
+
+  });
+});
