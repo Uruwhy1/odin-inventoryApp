@@ -52,6 +52,10 @@ h1 {
     width: 50%;
     justify-self: start;
   }
+
+  .info {
+    align-self: start;
+  }
 }
 
 @media screen and (max-width: 900px) {
