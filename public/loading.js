@@ -6,13 +6,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   function hideLoadingBar() {
     loadingElement.classList.remove("active");
+    setTimeout(() => {
+      loadingElement.style.background = "";
+    }, 500);
   }
 
   // Delay so animation always has time to complete
   document.addEventListener("click", function (event) {
     const target = event.target.closest("a");
-
-
 
     if (target && target.href) {
       event.preventDefault();
@@ -25,9 +26,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.addEventListener("submit", function (event) {
     const form = event.target.closest("form");
-    if (form) {
+
+    console.log(event.target);
+    if (form == document.getElementById("deleteForm")) {
       event.preventDefault();
+
+      console.log("XDJKNGDSNJGKDSJNK");
+      loadingElement.style.background = "red";
+    }
+
+    if (form) {
       showLoadingBar();
+      event.preventDefault();
 
       setTimeout(() => {
         hideLoadingBar();
