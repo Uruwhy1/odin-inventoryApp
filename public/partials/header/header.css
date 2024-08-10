@@ -127,5 +127,4 @@ header nav {
   .selected::after {
     content: "";
   }
-
 }

@@ -4,7 +4,6 @@ main {
   justify-content: center;
   align-items: center;
 
-  padding: 0 15%;
   gap: 2rem;
 }
 main div {
@@ -86,5 +85,4 @@ main div {
   .home-content {
     height: 50%;
   }
-
 }

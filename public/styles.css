@@ -21,6 +21,7 @@ header {
 }
 main {
   grid-area: content;
+  padding: 0 15%;
 }
 footer {
   grid-area: footer;
