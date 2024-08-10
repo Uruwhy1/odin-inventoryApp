@@ -1,60 +1,62 @@
 <link rel="stylesheet" href="/forms/form.css" />
 
-<h1>Add New Book</h1>
 <form action="/books/new" method="POST">
-  <div>
+  <div class="title">
     <label for="title">Title:</label>
     <input type="text" id="title" name="title" required />
   </div>
-  <div>
+  <div class="info">
+    <div>
+      <label for="author_id">Author:</label>
+      <select
+        id="author_id"
+        name="author_id"
+        required
+        onchange="toggleNewAuthorField(this)"
+      >
+        <option class="placeholder" value="">Select an author...</option>
+        <% authors.forEach(author => { %>
+        <option value="<%= author.id %>"><%= author.name %></option>
+        <% }) %>
+        <option class="new" value="new">Create Author...</option>
+      </select>
+    </div>
+    <div id="new-author-field" style="display: none">
+      <label for="new_author_name">New Author Name:</label>
+      <input type="text" id="new_author_name" name="new_author_name" />
+    </div>
+    <div>
+      <label for="category_id">Category:</label>
+      <select
+        id="category_id"
+        name="category_id"
+        required
+        onchange="toggleNewCategoryField(this)"
+      >
+        <option class="placeholder" value="">Select a category...</option>
+        <% categories.forEach(category => { %>
+        <option value="<%= category.id %>"><%= category.name %></option>
+        <% }) %>
+        <option class="new" value="new">Create Category...</option>
+      </select>
+    </div>
+    <div id="new-category-field" style="display: none">
+      <label for="new_category_name">New Category Name:</label>
+      <input type="text" id="new_category_name" name="new_category_name" />
+    </div>
+    <div>
+      <label for="image_url">Image URL:</label>
+      <input type="text" id="image_url" name="image_url" />
+    </div>
+  </div>
+  <div class="description-container">
     <label for="description">Description:</label>
     <textarea id="description" name="description" required></textarea>
   </div>
-  <div>
-    <label for="author_id">Author:</label>
-    <select
-      id="author_id"
-      name="author_id"
-      required
-      onchange="toggleNewAuthorField(this)"
-    >
-      <option class="placeholder" value="">Select an author...</option>
-      <% authors.forEach(author => { %>
-      <option value="<%= author.id %>"><%= author.name %></option>
-      <% }) %>
-      <option class="new" value="new">Create Author...</option>
-    </select>
-  </div>
-  <div id="new-author-field" style="display: none">
-    <label for="new_author_name">New Author Name:</label>
-    <input type="text" id="new_author_name" name="new_author_name" />
-  </div>
-  <div>
-    <label for="category_id">Category:</label>
-    <select
-      id="category_id"
-      name="category_id"
-      required
-      onchange="toggleNewCategoryField(this)"
-    >
-      <option class="placeholder" value="">Select a category...</option>
-      <% categories.forEach(category => { %>
-      <option value="<%= category.id %>"><%= category.name %></option>
-      <% }) %>
-      <option class="new" value="new">Create Category...</option>
-    </select>
-  </div>
-  <div id="new-category-field" style="display: none">
-    <label for="new_category_name">New Category Name:</label>
-    <input type="text" id="new_category_name" name="new_category_name" />
-  </div>
-  <div>
-    <label for="image_url">Image URL:</label>
-    <input type="text" id="image_url" name="image_url" />
-  </div>
   <button type="submit">Add Book</button>
 </form>
-<a href="/books">Back to Books</a>
+
+<a class="back" href="/books">Back to Books</a>
 
 <script>
   function toggleNewAuthorField(selectElement) {

@@ -6,7 +6,7 @@ main {
 
 /* top area */
 .container-header {
-  margin-top: -1.5rem;
+  margin-top: 2rem;
   margin-bottom: 2rem;
   display: flex;
   align-items: center;
@@ -110,13 +110,6 @@ main {
     margin-right: 0;
 
     gap: 1rem;
-  }
-
-  h1 {
-    display: none;
-  }
-  .container-header {
-    margin-top: 0;
   }
 
   .book-link {
