@@ -34,15 +34,17 @@ exports.newBookForm = async (req, res) => {
 exports.createBook = async (req, res) => {
   const { title, description, author_id, category_id, image_url } = req.body;
 
+
   try {
     const result = await pool.query(
       "INSERT INTO books (title, description, author_id, category_id, image_url) VALUES ($1, $2, $3, $4, $5) RETURNING *",
       [title, description, author_id, category_id, image_url]
     );
+
     res.redirect("/books");
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Failed to add book" });
+    console.error("Error adding new book:", err.stack);
+    res.status(500).send("Error adding new book");
   }
 };
 
@@ -136,7 +138,7 @@ exports.getBookById = async (req, res) => {
       book,
       image: book.image_url,
       title: book.title,
-      description: book.description,
+      description: book.description.split("\\n"),
       author: book.author_name,
       category: book.category_name,
     });

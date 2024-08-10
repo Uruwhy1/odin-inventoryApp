@@ -10,5 +10,9 @@
     <h1 class="title"><%= title %></h1>
     <p class="author"><%= author %></p>
   </div>
-  <p class="description"><%= description %></p>
+  <div class="description">
+    <% description.forEach(paragraph => { %>
+    <p><%= paragraph %></p>
+    <% }) %>
+  </div>
 </div>
