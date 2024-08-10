@@ -10,28 +10,56 @@
   </div>
   <div>
     <label for="author_id">Author:</label>
-    <select id="author_id" name="author_id" required>
+    <select id="author_id" name="author_id" required onchange="toggleNewAuthorField(this)">
+      <optio class="placeholder" value="">Select an author...</option> <!-- Blank default option -->
       <% authors.forEach(author => { %>
       <option value="<%= author.id %>"><%= author.name %></option>
       <% }) %>
+      <option class="new" value="new">Create Author...</option>
     </select>
+  </div>
+  <div id="new-author-field" style="display: none;">
+    <label for="new_author_name">New Author Name:</label>
+    <input type="text" id="new_author_name" name="new_author_name" />
   </div>
   <div>
     <label for="category_id">Category:</label>
-    <select id="category_id" name="category_id" required>
+    <select id="category_id" name="category_id" required onchange="toggleNewCategoryField(this)">
+      <option class="placeholder" value="">Select a category...</option> <!-- Blank default option for categories -->
       <% categories.forEach(category => { %>
       <option value="<%= category.id %>"><%= category.name %></option>
       <% }) %>
+      <option class="new" value="new">Create Category...</option>
     </select>
+  </div>
+  <div id="new-category-field" style="display: none;">
+    <label for="new_category_name">New Category Name:</label>
+    <input type="text" id="new_category_name" name="new_category_name" />
   </div>
   <div>
     <label for="image_url">Image URL:</label>
-    <input
-      type="text"
-      id="image_url"
-      name="image_url"
-    />
+    <input type="text" id="image_url" name="image_url" />
   </div>
   <button type="submit">Add Book</button>
 </form>
 <a href="/books">Back to Books</a>
+
+<script>
+  function toggleNewAuthorField(selectElement) {
+    const newAuthorField = document.getElementById("new-author-field");
+    if (selectElement.value === "new") {
+      newAuthorField.style.display = "block";
+    } else {
+      newAuthorField.style.display = "none";
+    }
+  }
+
+  function toggleNewCategoryField(selectElement) {
+    const newCategoryField = document.getElementById("new-category-field");
+    if (selectElement.value === "new") {
+      newCategoryField.style.display = "block";
+    } else {
+      newCategoryField.style.display = "none";
+    }
+  }
+</script>
