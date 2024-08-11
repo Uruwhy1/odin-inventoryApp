@@ -23,10 +23,13 @@ const createTables = async () => {
         description TEXT NOT NULL,
         author_id INTEGER NOT NULL,
         category_id INTEGER NOT NULL,
+        image_url TEXT,
         FOREIGN KEY (author_id) REFERENCES authors(id) ON DELETE CASCADE,
         FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE
       );
     `);
+
+    await insertBooksIfEmpty();
   } finally {
     client.release();
   }
@@ -94,5 +97,3 @@ const insertBooksIfEmpty = async () => {
     client.release();
   }
 };
-
-insertBooksIfEmpty();

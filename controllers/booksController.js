@@ -102,16 +102,44 @@ exports.editBookForm = async (req, res) => {
 
 exports.updateBook = async (req, res) => {
   const { id } = req.params;
-  const { title, description, author_id, category_id, image_url } = req.body;
+  const {
+    title,
+    description,
+    author_id,
+    new_author_name,
+    category_id,
+    new_category_name,
+    image_url,
+  } = req.body;
+
+  let authorId = author_id;
+  let categoryId = category_id;
 
   try {
+    if (author_id === "new" && new_author_name) {
+      const newAuthorResult = await pool.query(
+        "INSERT INTO authors (name) VALUES ($1) RETURNING id",
+        [new_author_name]
+      );
+      authorId = newAuthorResult.rows[0].id;
+    }
+
+    if (category_id === "new" && new_category_name) {
+      const newCategoryResult = await pool.query(
+        "INSERT INTO categories (name) VALUES ($1) RETURNING id",
+        [new_category_name]
+      );
+      categoryId = newCategoryResult.rows[0].id;
+    }
+
     await pool.query(
       "UPDATE books SET title = $1, description = $2, author_id = $3, category_id = $4, image_url = $5 WHERE id = $6",
-      [title, description, author_id, category_id, image_url, id]
+      [title, description, authorId, categoryId, image_url, id]
     );
+
     res.redirect(`/books`);
   } catch (err) {
-    console.error(err);
+    console.error("Error updating book:", err.stack);
     res.status(500).json({ error: "Failed to update book" });
   }
 };
