@@ -89,8 +89,33 @@ exports.editCategory = async (req, res) => {
 
 exports.deleteCategory = async (req, res) => {
   const { id } = req.params;
+
   try {
+    // find or create the "no category" entry
+    const noCategoryResult = await pool.query(
+      "SELECT id FROM categories WHERE name = $1",
+      ["No Category"]
+    );
+
+    let noCategoryId;
+
+    if (noCategoryResult.rows.length === 0) {
+      const newNoCategory = await pool.query(
+        "INSERT INTO categories (name) VALUES ($1) RETURNING id",
+        ["No Category"]
+      );
+      noCategoryId = newNoCategory.rows[0].id;
+    } else {
+      noCategoryId = noCategoryResult.rows[0].id;
+    }
+
+    // update books to 'no category' and delete category
+    await pool.query(
+      "UPDATE books SET category_id = $1 WHERE category_id = $2",
+      [noCategoryId, id]
+    );
     await pool.query("DELETE FROM categories WHERE id = $1", [id]);
+
     res.redirect("/categories");
   } catch (err) {
     console.error(err);

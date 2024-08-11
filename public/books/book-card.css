@@ -1,7 +1,7 @@
 /* bottom area */
 ul {
   display: grid;
-  gap: 3rem;
+  gap: 1rem 3rem;
 
   place-content: center;
   grid-template-columns: repeat(auto-fit, minmax(200px, 0.25fr));

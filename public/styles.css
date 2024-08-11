@@ -11,9 +11,8 @@ body {
   grid-template-areas:
     "header"
     "content"
-    "footer";
-
-  grid-template-rows: min-content auto min-content;
+    "toggle";
+  grid-template-rows: min-content auto 40px;
 }
 
 header {

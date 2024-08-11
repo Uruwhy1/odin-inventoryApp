@@ -6,7 +6,7 @@ main {
 
 /* top area */
 .container-header {
-  margin-top: 2rem;
+  margin-top: 1rem;
   margin-bottom: 2rem;
   display: flex;
   align-items: center;
@@ -55,7 +55,6 @@ main {
   }
 
   ul {
-    gap: 3rem;
     margin-right: 2.5rem;
   }
 
@@ -110,6 +109,7 @@ main {
     margin-right: 0;
 
     gap: 1rem;
+    margin-bottom: 2rem;
   }
 
   .book-link {
@@ -170,4 +170,10 @@ main {
     width: 100%;
     order: 1;
   }
+}
+
+@media screen and (max-width: 350px) {
+  ul {
+    margin-bottom: 2rem
+  };
 }

@@ -5,9 +5,11 @@ document.addEventListener("DOMContentLoaded", () => {
     loadingElement.classList.add("active");
   }
   function hideLoadingBar() {
-    loadingElement.classList.remove("active");
     setTimeout(() => {
-      loadingElement.style.background = "";
+      loadingElement.classList.remove("active");
+      setTimeout(() => {
+        loadingElement.style.background = "";
+      }, 500);
     }, 500);
   }
 
@@ -26,23 +28,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.addEventListener("submit", function (event) {
     const form = event.target.closest("form");
+    event.preventDefault();
+    showLoadingBar();
 
-    console.log(event.target);
-    if (form == document.getElementById("deleteForm")) {
-      event.preventDefault();
+    switch (form.id) {
+      case "addForm":
+        loadingElement.style.background = "lightgreen";
+        break;
+      case "deleteForm":
+        loadingElement.style.background = "red";
+        hideLoadingBar(); // 1s delay here
+        break;
 
-      console.log("XDJKNGDSNJGKDSJNK");
-      loadingElement.style.background = "red";
+      default:
+        break;
     }
 
-    if (form) {
-      showLoadingBar();
-      event.preventDefault();
-
-      setTimeout(() => {
-        hideLoadingBar();
-        form.submit(); // Submit the form after showing the loading bar
-      }, 500);
-    }
+    setTimeout(() => {
+      form.submit();
+    }, 500); // delay so loading bar fills up
   });
 });
