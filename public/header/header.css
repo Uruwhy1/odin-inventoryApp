@@ -5,8 +5,6 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-
 }
 
 header img {
@@ -16,7 +14,7 @@ header img {
 
 /* nav bar */
 
-header .header-container {
+.header-container {
   display: flex;
   align-items: center;
   gap: 4rem; /* gap between nav bar and theme toggle */
@@ -60,7 +58,7 @@ header nav {
 }
 
 .selected {
-  color: var(--red);
+  color: var(--red) !important;
 }
 
 .selected::after {
@@ -71,6 +69,10 @@ header nav {
 }
 .selected:hover::after {
   transform: scale(1.3);
+}
+
+.mobile {
+  display: none;
 }
 
 @media screen and (max-width: 1000px) {
@@ -98,13 +100,15 @@ header nav {
     display: none;
   }
   header {
-    padding: 1rem;
+    padding: 0rem;
     position: sticky;
-    top: 0;
-    background-color: var(--main-bg);
+    bottom: 0;
+
+    border-top: 1px solid var(--borders);
+    border-bottom: 0px;
+
+    background-color: var(--opposite-bg);
   }
-
-
 
   .header-container {
     width: 100%;
@@ -114,16 +118,30 @@ header nav {
   header nav {
     width: 100%;
     gap: 0;
-    justify-content: space-between;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .link {
+    color: var(--opposite-text-color);
+    display: none;
   }
   .link::after {
     content: "";
   }
 
-}
+  .mobile {
+    display: block;
+    padding: 1rem;
+    height: 100%;
+    border: 0;
 
-@media screen and (max-width: 380px) {
-  .link {
-    font-size: 1em;
+  }
+  .mobile:last-child {
+    border-right: none;
+  }
+  .mobile svg {
+    margin: auto;
   }
 }

@@ -2,6 +2,8 @@
   --main-bg: #ffffff;
   --opposite-bg: #303030;
 
+  --form-border: rgba(0, 0, 0, 0.336);
+
   --link-text: rgb(0, 183, 255);
   --text-color: #000;
   --opposite-text-color: #fff;
@@ -16,10 +18,14 @@
   /* below this line they are the same for .dark */
   --yellow: yellow;
 
+
+  --header-bg: rgb(255, 222, 222); /* only under 500px */
+
+  
   --edit-button-bg: rgb(255, 236, 70);
   --add-button-bg: rgb(255, 135, 135);
   --remove-button-bg: rgb(255, 92, 92);
-  
+
   --home-anchor-bg: rgb(255, 222, 222);
   --home-anchor-bg-hover: rgb(247, 178, 178);
 }
@@ -27,6 +33,8 @@
 :root.dark {
   --main-bg: #303030;
   --opposite-bg: #ffffff;
+
+  --form-border: transparent;
 
   --link-text: rgb(0, 140, 255);
   --text-color: #fff;

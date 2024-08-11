@@ -12,7 +12,7 @@ body {
     "header"
     "content"
     "toggle";
-  grid-template-rows: min-content auto 40px;
+  grid-template-rows: min-content auto 50px;
 }
 
 header {
@@ -41,3 +41,4 @@ footer {
 .loading.active {
   transform: scaleX(1);
 }
+
