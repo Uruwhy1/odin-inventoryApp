@@ -19,6 +19,39 @@ main {
   gap: 1rem;
 }
 
+.page-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.category-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+}
+
+.edit-btn {
+  background-color: var(--edit-button-bg);
+}
+
+.delete-btn {
+  background-color: var(--remove-button-bg);
+  border: none;
+  cursor: pointer;
+}
+
+.delete-form {
+  display: inline;
+}
+
 h1 {
   line-height: 1;
 }
@@ -81,5 +114,23 @@ h1 {
 @media screen and (max-width: 600px) {
   .cover {
     width: 70%;
+  }
+}
+
+
+@media screen and (max-width: 500px) {
+  .cover {
+    width: 80%;
+  }
+
+  .page-header-container {
+    gap: 1rem;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .cover {
+    width: 100%;
   }
 }

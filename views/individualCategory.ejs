@@ -1,0 +1,14 @@
+
+<div class="page-header-container">
+  <h1><%= category.name %> Books</h1>
+
+  <div class="category-actions">
+    <a href="/categories/<%= category.id %>/edit" class="btn edit-btn">Edit Category</a>
+    <form action="/categories/<%= category.id %>/delete" method="POST" class="delete-form">
+      <button type="submit" class="btn delete-btn">Remove Category</button>
+    </form>
+  </div>
+</div>
+
+<%- include('books.ejs') %>
+<link rel="stylesheet" href="/category-page/category-page.css">

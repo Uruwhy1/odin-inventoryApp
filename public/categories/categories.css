@@ -160,9 +160,7 @@ main {
   li {
     padding: 0;
   }
-}
 
-@media screen and (max-width: 380px) {
   .container-header {
     flex-direction: column;
   }
@@ -170,7 +168,9 @@ main {
     width: 100%;
     order: 1;
   }
+}
 
+@media screen and (max-width: 380px) {
   .buttons {
     display: none;
   }

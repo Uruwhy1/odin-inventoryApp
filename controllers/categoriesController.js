@@ -30,8 +30,8 @@ exports.listBooksByCategory = async (req, res) => {
       [id]
     );
 
-    res.render("categoryBooks", {
-      title: `Books in ${category.name}`,
+    res.render("individualCategory", {
+      title: `${category.name} Books`,
       category: category,
       books: booksResult.rows,
     });
