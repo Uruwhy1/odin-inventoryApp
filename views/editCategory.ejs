@@ -1,17 +1,25 @@
-<main>
-  <h1>Edit Category</h1>
-  <form action="/categories/<%= category.id %>/edit" method="POST">
-    <div>
-      <label for="name">Name:</label>
-      <input
-        type="text"
-        id="name"
-        name="name"
-        value="<%= category.name %>"
-        required
-      />
-    </div>
-    <button type="submit">Update Category</button>
-  </form>
-  <a href="/categories">Back to Categories</a>
-</main>
+<link rel="stylesheet" href="/forms/form.css">
+
+<form action="/categories/<%= category.id %>/edit" method="POST">
+  <div>
+    <label for="name">Name:</label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      value="<%= category.name %>"
+      required
+    />
+  </div>
+  <div>
+    <label for="image_url">Image URL:</label>
+    <input
+      type="text"
+      id="image_url"
+      name="image_url"
+      value="<%= category ? category.image_url : '' %>"
+    />
+  </div>
+  <button type="submit">Update Category</button>
+</form>
+<a class="back" href="/categories">Back to Categories</a>

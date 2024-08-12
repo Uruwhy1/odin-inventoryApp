@@ -43,9 +43,9 @@ exports.createCategoryForm = (req, res) => {
 };
 
 exports.createCategory = async (req, res) => {
-  const { name } = req.body;
+  const { name, image_url } = req.body;
   try {
-    await pool.query("INSERT INTO categories (name) VALUES ($1)", [name]);
+    await pool.query("INSERT INTO categories (name, image_url) VALUES ($1, $2)", [name, image_url]);
     res.redirect("/categories");
   } catch (err) {
     console.error(err);
@@ -74,10 +74,11 @@ exports.editCategoryForm = async (req, res) => {
 
 exports.editCategory = async (req, res) => {
   const { id } = req.params;
-  const { name } = req.body;
+  const { name, image_url } = req.body;
   try {
-    await pool.query("UPDATE categories SET name = $1 WHERE id = $2", [
+    await pool.query("UPDATE categories SET name = $1, image_url = $2 WHERE id = $3", [
       name,
+      image_url,
       id,
     ]);
     res.redirect("/categories");
