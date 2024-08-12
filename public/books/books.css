@@ -85,6 +85,7 @@ main {
   @keyframes extend {
     from {
       z-index: 2;
+      right: -2.5rem;
     }
     to {
       right: -2.5rem;

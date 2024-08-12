@@ -38,6 +38,7 @@ header nav {
   z-index: 1;
 }
 .link::after {
+  position: absolute;
   transform: scale(1.3);
 }
 
@@ -47,7 +48,6 @@ header nav {
 .unselected::after {
   opacity: 0;
   content: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNCIgaGVpZ2h0PSIxNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJicm93biIgc3Ryb2tlPSJicm93biIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJmZWF0aGVyIGZlYXRoZXItYm9va21hcmsiPjxwYXRoIGQ9Ik0xOSAyMWwtNy01LTcgNVY1YTIgMiAwIDAgMSAyLTJoMTBhMiAyIDAgMCAxIDIgMnoiPjwvcGF0aD48L3N2Zz4=");
-  position: absolute;
   bottom: -15px;
 
   transition: transform 0.2s;
@@ -64,7 +64,6 @@ header nav {
 .selected::after {
   content: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNCIgaGVpZ2h0PSIxNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJyZWQiIHN0cm9rZT0icmVkIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgY2xhc3M9ImZlYXRoZXIgZmVhdGhlci1ib29rbWFyayI+PHBhdGggZD0iTTE5IDIxbC03LTUtNyA1VjVhMiAyIDAgMCAxIDItMmgxMGEyIDIgMCAwIDEgMiAyeiI+PC9wYXRoPjwvc3ZnPg==");
   opacity: 1;
-  position: absolute;
   bottom: -25px;
 }
 .selected:hover::after {
@@ -116,7 +115,7 @@ header nav {
 
   header nav {
     width: 100%;
-    gap: 0;
+    height: 100%;
 
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -130,17 +129,39 @@ header nav {
     content: "";
   }
 
+  .selected {
+    --red: rgb(255, 137, 137);
+  }
+
   .mobile {
-    display: block;
-    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    padding: 1rem 0;
+    gap: 0.25rem;
     height: 100%;
     border: 0;
 
+    line-height: 1;
+
+    border-right: 1px solid #ffffff50;
+    font-size: 0.9rem;
+  }
+  :root.dark .mobile {
+    border-color: #00000050;
   }
   .mobile:last-child {
     border-right: none;
   }
   .mobile svg {
     margin: auto;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .mobile p {
+    display: none;
   }
 }
