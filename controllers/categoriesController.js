@@ -23,7 +23,10 @@ exports.listBooksByCategory = async (req, res) => {
 
     const category = categoryResult.rows[0];
     const booksResult = await pool.query(
-      "SELECT * FROM books WHERE category_id = $1",
+      `SELECT books.*, authors.name AS author_name 
+       FROM books 
+       JOIN authors ON books.author_id = authors.id 
+       WHERE books.category_id = $1`,
       [id]
     );
 
@@ -45,7 +48,10 @@ exports.createCategoryForm = (req, res) => {
 exports.createCategory = async (req, res) => {
   const { name, image_url } = req.body;
   try {
-    await pool.query("INSERT INTO categories (name, image_url) VALUES ($1, $2)", [name, image_url]);
+    await pool.query(
+      "INSERT INTO categories (name, image_url) VALUES ($1, $2)",
+      [name, image_url]
+    );
     res.redirect("/categories");
   } catch (err) {
     console.error(err);
@@ -76,11 +82,10 @@ exports.editCategory = async (req, res) => {
   const { id } = req.params;
   const { name, image_url } = req.body;
   try {
-    await pool.query("UPDATE categories SET name = $1, image_url = $2 WHERE id = $3", [
-      name,
-      image_url,
-      id,
-    ]);
+    await pool.query(
+      "UPDATE categories SET name = $1, image_url = $2 WHERE id = $3",
+      [name, image_url, id]
+    );
     res.redirect("/categories");
   } catch (err) {
     console.error(err);

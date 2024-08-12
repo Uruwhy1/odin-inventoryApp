@@ -104,8 +104,7 @@ header nav {
     position: sticky;
     bottom: 0;
 
-    border-top: 1px solid var(--borders);
-    border-bottom: 0px;
+    border: 0px;
 
     background-color: var(--opposite-bg);
   }

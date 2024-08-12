@@ -1,10 +1,10 @@
 /* bottom area */
 ul {
   display: grid;
-  gap: 1rem 3rem;
+  gap: 3rem;
 
   place-content: center;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 0.25fr));
+  grid-template-columns: repeat(auto-fit, 200px);
   grid-auto-rows: max-content;
 
   padding: 0;
@@ -38,6 +38,8 @@ li {
 .image {
   height: 250px;
   width: 100%;
+
+  aspect-ratio: 3/ 4;
 
   background-size: cover;
   background-repeat: no-repeat;

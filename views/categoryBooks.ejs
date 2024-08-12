@@ -1,23 +1,22 @@
-<h1>Books in <%= category.name %></h1>
-<% if (books.length > 0) { %>
-<ul>
-  <% books.forEach(book => { %>
-  <li>
-    <h2><%= book.title %></h2>
-    <p><%= book.description %></p>
-    <p>Author: <%= book.author_name %></p>
-    <a href="/books/<%= book.id %>/edit">Edit</a>
-    <form
-      action="/books/<%= book.id %>/delete"
-      method="POST"
-      style="display: inline"
-    >
-      <button type="submit">Delete</button>
-    </form>
-  </li>
-  <% }) %>
-</ul>
-<% } else { %>
-<p>No books found in this category.</p>
-<% } %>
-<a href="/categories">Back to Categories</a>
+<h1><%= category.name %> Books</h1>
+<%- include('books.ejs') %>
+
+<style>
+  h1 {
+    margin-bottom: -2rem;
+  }
+
+  @media screen and (max-width: 380px) {
+    h1 {
+      text-align: center;
+      font-size: 1.8rem;
+    }
+  } 
+  @media screen and (max-width: 340px) {
+    h1 {
+      font-size: 1.5rem;
+    }
+  }
+
+</style>
+

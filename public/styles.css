@@ -12,7 +12,7 @@ body {
     "header"
     "content"
     "toggle";
-  grid-template-rows: min-content auto 50px;
+  grid-template-rows: min-content auto 0px;
 }
 
 header {
@@ -42,3 +42,8 @@ footer {
   transform: scaleX(1);
 }
 
+@media screen and (max-width: 500px) {
+  body {
+    grid-template-rows: min-content auto 40px;
+  }
+}

@@ -125,8 +125,10 @@ main div {
 
 @media screen and (max-width: 350px) {
   body {
-    place-content: start stretch;
+    place-content: stretch;
   }
+
+
 
   .home-content {
     height: 70px;
