@@ -117,7 +117,7 @@ exports.deleteCategory = async (req, res) => {
     );
     await pool.query("DELETE FROM categories WHERE id = $1", [id]);
 
-    res.redirect("/categories");
+    res.status(204).send();
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Failed to delete category" });
