@@ -109,7 +109,7 @@ li {
   to {
     top: -2.5rem;
     color: #fff;
-    padding-bottom: calc(218px + 2.5rem);
+    padding-bottom: calc(118px + 2.5rem);
     z-index: 2;
   }
 }

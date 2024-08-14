@@ -27,7 +27,7 @@ exports.listBooksByAuthor = async (req, res) => {
       [id]
     );
 
-    res.render("authorBooks", {
+    res.render("individualAuthor", {
       author: author,
       books: booksResult.rows,
       title: `Books by ${author.name}`,
@@ -43,11 +43,11 @@ exports.createAuthorForm = (req, res) => {
 };
 
 exports.createAuthor = async (req, res) => {
-  const { name } = req.body;
+  const { name, image_url } = req.body;
   try {
     const result = await pool.query(
-      "INSERT INTO authors (name) VALUES ($1) RETURNING *",
-      [name]
+      "INSERT INTO authors (name, image_url) VALUES ($1, $2)",
+      [name, image_url]
     );
     res.redirect("/authors");
   } catch (err) {
@@ -78,11 +78,11 @@ exports.editAuthorForm = async (req, res) => {
 
 exports.updateAuthor = async (req, res) => {
   const { id } = req.params;
-  const { name } = req.body;
+  const { name, image_url } = req.body;
   try {
     const result = await pool.query(
-      "UPDATE authors SET name = $1 WHERE id = $2 RETURNING *",
-      [name, id]
+      "UPDATE authors SET name = $1, image_url = $2 WHERE id = $3",
+      [name, image_url, id]
     );
     if (result.rows.length === 0) {
       return res.status(404).send("Author not found");

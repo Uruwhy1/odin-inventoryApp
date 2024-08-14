@@ -65,26 +65,29 @@ const insertBooksIfEmpty = async () => {
     `);
 
       await client.query(`
-        INSERT INTO books (title, description, author_id, category_id) VALUES 
+        INSERT INTO books (title, description, author_id, category_id, image_url) VALUES 
         ('Sapiens: A Brief History of Humankind', 
           'Sapiens explores the history of humankind, starting with the emergence of Homo sapiens in the Stone Age and tracing the development of human societies through the Agricultural and Scientific Revolutions. Yuval Noah Harari delves into how humans have come to dominate the planet, the creation of complex social structures, and the future implications of biotechnology and artificial intelligence.', 
           (SELECT id FROM authors WHERE name = 'Yuval Noah Harari'), 
-          (SELECT id FROM categories WHERE name = 'Non-Fiction')),
+          (SELECT id FROM categories WHERE name = 'Non-Fiction'),
+          'https://m.media-amazon.com/images/I/713jIoMO3UL._AC_UF1000,1000_QL80_.jpg'),
 
         ('The Hobbit', 
           'The Hobbit, written by J.R.R. Tolkien, is a prelude to the epic Lord of the Rings trilogy. The story follows Bilbo Baggins, a hobbit who is reluctantly drawn into an adventure by the wizard Gandalf and a group of dwarves seeking to reclaim their homeland from the dragon Smaug. Throughout the journey, Bilbo encounters trolls, elves, giant spiders, and more, ultimately discovering his own bravery and resourcefulness.', 
           (SELECT id FROM authors WHERE name = 'J.R.R. Tolkien'), 
-          (SELECT id FROM categories WHERE name = 'Fantasy')),
+          (SELECT id FROM categories WHERE name = 'Fantasy'),
+          'https://covers.shakespeareandcompany.com/97802611/9780261103344.jpg'),
 
         ('1984', 
           '1984, written by George Orwell, is a dystopian novel set in a totalitarian society ruled by the Party and its leader, Big Brother. The story follows Winston Smith, a man who begins to question the Party''s control and the reality presented to him. Orwell''s chilling depiction of surveillance, propaganda, and the loss of individuality has made 1984 a profound commentary on the dangers of totalitarianism.', 
           (SELECT id FROM authors WHERE name = 'George Orwell'), 
-          (SELECT id FROM categories WHERE name = 'Science Fiction'))
+          (SELECT id FROM categories WHERE name = 'Science Fiction'),
+          'https://m.media-amazon.com/images/I/61ZewDE3beL._AC_UF894,1000_QL80_.jpg')
           `);
 
-      console.log("Books inserted successfully.");
+      console.log("Books inserted.");
     } else {
-      console.log("Books table is not empty. No insertion performed.");
+      console.log("Books table not empty.");
     }
   } catch (err) {
     console.error("Error inserting books:", err.stack);
