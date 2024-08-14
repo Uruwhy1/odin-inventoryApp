@@ -1,3 +1,9 @@
+document.addEventListener("DOMContentLoaded", function() {
+  const firstInput = document.querySelector("input");
+  if (firstInput) {
+    firstInput.focus();
+  }
+  
   function toggleNewAuthorField(selectElement) {
     const newAuthorField = document.getElementById("new-author-field");
     if (selectElement.value === "new") {
@@ -15,3 +21,4 @@
       newCategoryField.style.display = "none";
     }
   }
+});

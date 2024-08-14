@@ -52,8 +52,8 @@ textarea {
   min-height: 100px;
 }
 
-button {
-  background-color: #007bff;
+button[type="submit"] {
+  background-color: #1363B8;
   color: white;
   padding: 12px;
   border: none;
@@ -64,9 +64,11 @@ button {
   width: 100%;
   transition: background-color 0.3s;
 }
-
-button:hover {
+button[type="submit"]:hover {
   background-color: #0056b3;
+}
+button[type="submit"]:focus {
+  outline: 3px solid red;
 }
 
 .back {

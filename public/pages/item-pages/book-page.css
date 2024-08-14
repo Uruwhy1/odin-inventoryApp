@@ -37,6 +37,11 @@ main {
   text-decoration: none;
   color: #fff;
   font-weight: 500;
+
+  transition: filter 0.15s;
+}
+.btn:hover {
+  filter: saturate(2);
 }
 
 .edit-btn {

@@ -10,21 +10,20 @@
 
   --borders: #ebebebfd;
 
-  --brown: brown;
-  --red: red;
+  --brown: rgb(172, 62, 62);
+  --red: #d00000;
 
   --book-bg: #eeeeee;
 
+  --remove-button-bg: #d62121;
+  --edit-button-bg: #3b52ac;
+
+  --yellow: yellow; /* for theme toggle */
+
   /* below this line they are the same for .dark */
-  --yellow: yellow;
-
-
   --header-bg: rgb(255, 222, 222); /* only under 500px */
 
-  
-  --edit-button-bg: rgb(255, 236, 70);
-  --add-button-bg: rgb(255, 135, 135);
-  --remove-button-bg: rgb(255, 92, 92);
+  --add-button-bg: #c64949;
 
   --home-anchor-bg: rgb(255, 222, 222);
   --home-anchor-bg-hover: rgb(247, 178, 178);
@@ -46,4 +45,9 @@
 
   --brown: rgb(255, 217, 186);
   --red: rgb(255, 135, 135);
+
+  --edit-button-bg: #5f70b6;
+  --remove-button-bg: #ff6262;
+
+  --yellow: #ffbf00;
 }

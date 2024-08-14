@@ -38,10 +38,10 @@ main {
   transition: filter 0.3s;
 }
 .add-new:hover {
-  filter: saturate(3);
+  filter: saturate(1.5);
 }
 .add-new:active {
-  filter: saturate(6);
+  filter: saturate(3);
 }
 
 /* MEDIA QUERIES */

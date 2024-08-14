@@ -10,15 +10,15 @@
   color: var(--yellow);
 
   cursor: pointer;
-  transition: background 0.5s;
-
-  perspective: 1000px;
+  transition: background 0.25s;
 
   position: sticky;
   bottom: 0.5rem;
   right: 1rem;
   align-self: end;
   justify-self: end;
+
+  border: 0;
 }
 
 #theme-toggle svg {
@@ -43,3 +43,4 @@
     transform: rotate(360deg);
   }
 }
+
