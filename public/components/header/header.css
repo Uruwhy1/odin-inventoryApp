@@ -146,7 +146,6 @@ header nav {
 
     line-height: 1;
 
-    border-right: 1px solid #ffffff50;
     font-size: 0.9rem;
   }
   :root.dark .mobile {
@@ -157,11 +156,6 @@ header nav {
   }
   .mobile svg {
     margin: auto;
-  }
-}
 
-@media screen and (max-width: 370px) {
-  .mobile p {
-    display: none;
   }
 }
