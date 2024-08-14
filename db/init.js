@@ -13,7 +13,8 @@ const createTables = async () => {
     await client.query(`
       CREATE TABLE IF NOT EXISTS authors (
         id SERIAL PRIMARY KEY,
-        name VARCHAR(255) NOT NULL UNIQUE
+        name VARCHAR(255) NOT NULL UNIQUE,
+        image_url VARCHAR(255)
       );
     `);
     await client.query(`
@@ -56,21 +57,15 @@ const insertBooksIfEmpty = async () => {
       `);
 
       await client.query(`
-        INSERT INTO authors (name) VALUES 
-        ('J.R.R. Tolkien'),
-        ('George Orwell'),
-        ('J.K. Rowling'),
-        ('Yuval Noah Harari')
+        INSERT INTO authors (name, image_url) VALUES 
+        ('J.R.R. Tolkien', 'https://cdn.britannica.com/65/66765-050-63A945A7/JRR-Tolkien.jpg'),
+        ('George Orwell', 'https://www.biografiasyvidas.com/biografia/o/fotos/orwell.jpg'),
+        ('Yuval Noah Harari', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnaDGIAPVDcGxBeaKFBwPP3QOqsOJdbr3uIQ&s')
         ON CONFLICT (name) DO NOTHING;
     `);
 
       await client.query(`
         INSERT INTO books (title, description, author_id, category_id) VALUES 
-        ('Harry Potter and the Sorcerer''s Stone', 
-          'Harry Potter, a young wizard who discovers his magical heritage on his eleventh birthday when he receives a letter of acceptance to the Hogwarts School of Witchcraft and Wizardry. This marks the beginning of his journey into the wizarding world, where he makes lifelong friends and faces numerous challenges, including the dark wizard Lord Voldemort.', 
-          (SELECT id FROM authors WHERE name = 'J.K. Rowling'), 
-          (SELECT id FROM categories WHERE name = 'Fantasy')),
-
         ('Sapiens: A Brief History of Humankind', 
           'Sapiens explores the history of humankind, starting with the emergence of Homo sapiens in the Stone Age and tracing the development of human societies through the Agricultural and Scientific Revolutions. Yuval Noah Harari delves into how humans have come to dominate the planet, the creation of complex social structures, and the future implications of biotechnology and artificial intelligence.', 
           (SELECT id FROM authors WHERE name = 'Yuval Noah Harari'), 
