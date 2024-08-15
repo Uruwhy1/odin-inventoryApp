@@ -97,14 +97,32 @@ exports.updateAuthor = async (req, res) => {
 exports.deleteAuthor = async (req, res) => {
   const { id } = req.params;
   try {
-    const result = await pool.query(
-      "DELETE FROM authors WHERE id = $1 RETURNING *",
-      [id]
+    // find or create the "no category" entry
+    const noAuthorResult = await pool.query(
+      "SELECT id FROM authors WHERE name = $1",
+      ["No Author"]
     );
-    if (result.rows.length === 0) {
-      return res.status(404).send("Author not found");
+
+    let noAuthorId;
+
+    if (noAuthorResult.rows.length === 0) {
+      const newNoCategory = await pool.query(
+        "INSERT INTO authors (name) VALUES ($1) RETURNING id",
+        ["No Author"]
+      );
+      noAuthorId = newNoCategory.rows[0].id;
+    } else {
+      noAuthorId = noAuthorResult.rows[0].id;
     }
-    res.redirect("/authors");
+
+    // update books to 'no category' and delete category
+    await pool.query(
+      "UPDATE books SET author_id = $1 WHERE author_id = $2",
+      [noAuthorId, id]
+    );
+    await pool.query("DELETE FROM authors WHERE id = $1", [id]);
+
+    res.status(204).send();
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Failed to delete author" });

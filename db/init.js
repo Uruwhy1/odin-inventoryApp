@@ -60,7 +60,9 @@ const insertBooksIfEmpty = async () => {
         INSERT INTO authors (name, image_url) VALUES 
         ('J.R.R. Tolkien', 'https://cdn.britannica.com/65/66765-050-63A945A7/JRR-Tolkien.jpg'),
         ('George Orwell', 'https://www.biografiasyvidas.com/biografia/o/fotos/orwell.jpg'),
-        ('Yuval Noah Harari', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnaDGIAPVDcGxBeaKFBwPP3QOqsOJdbr3uIQ&s')
+        ('Yuval Noah Harari', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnaDGIAPVDcGxBeaKFBwPP3QOqsOJdbr3uIQ&s'),
+        ('No Author', '')
+
         ON CONFLICT (name) DO NOTHING;
     `);
 
