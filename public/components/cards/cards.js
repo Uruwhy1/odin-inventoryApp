@@ -19,14 +19,15 @@ const remove = document.querySelectorAll(".remove");
 
 remove.forEach((item) => {
   item.addEventListener("click", () => {
+    setTimeout(() => {
+      setTimeout(() => {
+        book.style.opacity = "0";
+      }, 250);
+      setTimeout(() => {
+        book.style.display = "none";
+      }, 500);
+    }, 0);
     const book = item.closest("li");
     item.style.animation = "extend 0.25s linear forwards";
-
-    setTimeout(() => {
-      book.style.opacity = "0";
-    }, 250);
-    setTimeout(() => {
-      book.style.display = "none";
-    }, 500);
   });
 });

@@ -109,7 +109,7 @@ select {
 .select::after {
   position: absolute;
   content: "";
-  top: 45px;
+  top: 42px;
   right: 1rem;
   width: 16px;
   height: 16px;

@@ -44,6 +44,31 @@ main {
   filter: saturate(3);
 }
 
+.no-books {
+  align-self: center;
+  font-size: 1.1rem;
+
+  text-align: center;
+}
+.no-books button {
+  margin-top: 0.5rem;
+  padding: 0.3em 1em;
+
+  background-color: var(--book-bg);
+  border-radius: 5px;
+  border: none;
+
+  color: var(--text-color);
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.no-books button:hover {
+  padding: 0.3em 1.5em;
+  transform: scale(1.05);
+}
+
 /* MEDIA QUERIES */
 
 @media screen and (max-width: 1000px) {

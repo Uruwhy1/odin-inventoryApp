@@ -3,11 +3,12 @@ const expressLayouts = require("express-ejs-layouts");
 const path = require("path");
 require("dotenv").config();
 
-const createTables = require("./db/init");
+const { createTables, insertBooksIfEmpty } = require("./db/init");
+
 const booksRoutes = require("./routes/booksRoutes");
 const authorsRoutes = require("./routes/authorsRoutes");
 const categoriesRoutes = require("./routes/categoriesRoutes");
-const pool = require('./db/index');
+const pool = require("./db/index");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -22,16 +23,28 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", async (req, res) => {
   try {
-    const categoriesResult = await pool.query("SELECT * FROM categories LIMIT 7");
+    const categoriesResult = await pool.query(
+      "SELECT * FROM categories LIMIT 7"
+    );
     const authorsResult = await pool.query("SELECT * FROM authors LIMIT 7");
     res.render("home", {
-      title: 'Homepage',
+      title: "Homepage",
       categories: categoriesResult.rows,
-      authors: authorsResult.rows
+      authors: authorsResult.rows,
     });
   } catch (err) {
     console.error("Error fetching catgories and authors:", err.stack);
     res.status(500).send("Error fetching catgories and authors");
+  }
+});
+
+app.post("/insert", async (req, res) => {
+  try {
+    await insertBooksIfEmpty();
+    res.redirect("/books");
+  } catch (err) {
+    console.error("Error inserting books:", err.stack);
+    res.status(500).send("Error inserting books.");
   }
 });
 

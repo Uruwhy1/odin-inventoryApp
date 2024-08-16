@@ -36,8 +36,6 @@ const createTables = async () => {
   }
 };
 
-module.exports = createTables;
-
 const insertBooksIfEmpty = async () => {
   const client = await pool.connect();
   try {
@@ -49,20 +47,19 @@ const insertBooksIfEmpty = async () => {
 
       await client.query(`
         INSERT INTO categories (name, image_url) VALUES 
+        ('No Category', ''),
         ('Science Fiction', 'https://img.freepik.com/free-photo/futuristic-view-high-tech-earth-planet_23-2151100395.jpg?t=st=1723478609~exp=1723482209~hmac=5b5047ac1fb39d89c31118a72615d81214c33569da1e5079ff6ac0059ca35121&w=996'),
         ('Fantasy', 'https://img.freepik.com/free-photo/beautiful-mountains-landscape_23-2151151037.jpg?t=st=1723478110~exp=1723481710~hmac=1910e40e8584b06ac5ed526e7b318583bb52bcc6141b23db7c121a198e60fc0d&w=996'),
-        ('Non-Fiction', 'https://img.freepik.com/free-photo/close-up-open-book-armchair_23-2147615042.jpg?t=st=1723478641~exp=1723482241~hmac=147bea5a992d25576c3edaf97b4149abb845c4334c88c5f7d2ae7b218d0ea358&w=996'),
-        ('No Category', '')
+        ('Non-Fiction', 'https://img.freepik.com/free-photo/close-up-open-book-armchair_23-2147615042.jpg?t=st=1723478641~exp=1723482241~hmac=147bea5a992d25576c3edaf97b4149abb845c4334c88c5f7d2ae7b218d0ea358&w=996')
         ON CONFLICT (name) DO NOTHING;
       `);
 
       await client.query(`
         INSERT INTO authors (name, image_url) VALUES 
+        ('No Author', ''),
         ('J.R.R. Tolkien', 'https://cdn.britannica.com/65/66765-050-63A945A7/JRR-Tolkien.jpg'),
         ('George Orwell', 'https://www.biografiasyvidas.com/biografia/o/fotos/orwell.jpg'),
-        ('Yuval Noah Harari', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnaDGIAPVDcGxBeaKFBwPP3QOqsOJdbr3uIQ&s'),
-        ('No Author', '')
-
+        ('Yuval Noah Harari', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnaDGIAPVDcGxBeaKFBwPP3QOqsOJdbr3uIQ&s')
         ON CONFLICT (name) DO NOTHING;
     `);
 
@@ -96,4 +93,9 @@ const insertBooksIfEmpty = async () => {
   } finally {
     client.release();
   }
+};
+
+module.exports = {
+  createTables,
+  insertBooksIfEmpty,
 };

@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="/pages/base.css" />
 
 <script src="/components/cards/cards.js" defer></script>
-
+<script src="/pages/deleteProtection.js"></script>
 
 <div class="container-header">
   <input class="search" id="searchItems" placeholder="Search Categories" />
@@ -52,6 +52,7 @@
         method="POST"
         style="display: inline"
         id="deleteForm"
+        data-category-name="<%= category.name %>"
       >
         <button class="remove tag-link" type="submit">
           <svg

@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="/pages/base.css" />
 
 <script src="/components/cards/cards.js" defer></script>
+<script src="/pages/deleteProtection.js"></script>
 
 <div class="container-header">
   <input class="search" id="searchItems" placeholder="Filter Authors..." />
@@ -50,6 +51,7 @@
         action="/authors/<%= author.id %>/delete"
         method="POST"
         style="display: inline"
+        data-author-name="<%= author.name %>"
         id="deleteForm"
       >
         <button class="remove tag-link" type="submit">
