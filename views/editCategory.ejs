@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="/components/forms/form.css">
+<script src="/components/forms/form.js"></script>
 
-<form action="/categories/<%= category.id %>/edit" method="POST">
+<form id="updateForm" action="/categories/<%= category.id %>/edit" method="POST">
   <div>
     <label for="name">Name:</label>
     <input
@@ -20,6 +21,7 @@
       value="<%= category ? category.image_url : '' %>"
     />
   </div>
+  <label id="message" style="display: none;"></label>
   <button type="submit">Update Category</button>
 </form>
 <a class="back" href="/categories">Back to Categories</a>
