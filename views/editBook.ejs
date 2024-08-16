@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="/components/forms/form.css">
 <script src="/components/forms/form.js"></script>
 
-<form action="/books/<%= book.id %>/edit" method="POST">
+<form id="updateForm" action="/books/<%= book.id %>/edit" method="POST">
   <div>
     <label for="title">Title:</label>
     <input
@@ -78,6 +78,7 @@
     <textarea id="description" name="description" required><%= book.description %></textarea>
   </div>
   
+  <label id="message" style="display: none;"></label>
   <button type="submit">Update Book</button>
 </form>
 <a class="back" href="/books">Back to Books</a>

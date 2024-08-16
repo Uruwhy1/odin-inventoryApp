@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="/components/forms/form.css">
 <script src="/components/forms/form.js"></script>
 
-<form action="/categories/new" method="POST">
+<form id="addForm" action="/categories/new" method="POST">
   <div>
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" required />
@@ -14,6 +14,7 @@
       name="image_url"
     />
   </div>
+  <label id="message" style="display: none;"></label>
   <button type="submit">Create Category</button>
 </form>
 <a class="back" href="/categories">Back to Categories</a>

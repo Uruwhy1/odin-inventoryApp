@@ -24,6 +24,20 @@ document.addEventListener("DOMContentLoaded", () => {
         location.href = target.href;
       }, 500);
     }
+
+    switch (target.id) {
+      case "addForm":
+        loadingElement.style.background = "lightgreen";
+        break;
+      case "deleteForm":
+        loadingElement.style.background = "red";
+        hideLoadingBar(); // 1s delay here
+        break;
+      case "updateForm":
+        loadingElement.style.background = "yellow";
+      default:
+        break;
+    }
   });
 
   document.addEventListener("submit", function (event) {
@@ -39,7 +53,8 @@ document.addEventListener("DOMContentLoaded", () => {
         loadingElement.style.background = "red";
         hideLoadingBar(); // 1s delay here
         break;
-
+      case "updateForm":
+        loadingElement.style.background = "yellow";
       default:
         break;
     }

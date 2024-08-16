@@ -55,7 +55,9 @@ exports.createCategory = async (req, res) => {
     res.redirect("/categories");
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: "Failed to create category" });
+    res.redirect(
+      `/categories/new?status=error&message=${encodeURIComponent(err.message)}`
+    );
   }
 };
 
@@ -89,7 +91,9 @@ exports.editCategory = async (req, res) => {
     res.redirect("/categories");
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: "Failed to update category" });
+    res.redirect(
+      `/categories/${id}/edit?status=error&message=${encodeURIComponent(err.message)}`
+    );
   }
 };
 

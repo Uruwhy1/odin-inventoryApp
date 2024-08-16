@@ -13,7 +13,7 @@ const createTables = async () => {
     await client.query(`
       CREATE TABLE IF NOT EXISTS authors (
         id SERIAL PRIMARY KEY,
-        name VARCHAR(255) NOT NULL UNIQUE,
+        name VARCHAR(255) NOT NULL,
         image_url VARCHAR(255)
       );
     `);
